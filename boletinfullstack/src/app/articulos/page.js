@@ -29,12 +29,11 @@ export default function ArticulosPage() {
   if (articulos.length === 0) {
     return <p>No hay artículos disponibles.</p>;
   }
-
   return (
     <div>
       <h1>Lista de artículos</h1>
       {articulos.map((articulo) => (
-        <div key={articulo.id} style={{ marginBottom: "1rem" }}>
+        <div key={articulo.id}>
           <Link href={"/articulos/" + articulo.id}>
 
               <p>Titulo: {articulo.titulo}</p>
