@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import Link from "next/link";
 
-export default function Agregar() {
+export default function AgregarArticulo() {
   const [titulo, setTitulo] = useState("");
   const [contenido, setContenido] = useState("");
   const [autor, setAutor] = useState("");

@@ -3,7 +3,7 @@
 import { use,useState, useEffect } from "react";
 import Link from "next/link";
 
-export default function Contact({ params }) {
+export default function VistaArticulo({ params }) {
   const { id } = use(params);
   const [articulos, setArticulos] = useState(null);
   const [loading, setLoading] = useState(true);

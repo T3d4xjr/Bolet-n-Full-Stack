@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 
-export default function ProductosPage() {
+export default function AgregarProductos() {
   const [productos, setProductos] = useState([]);
   const [formData, setFormData] = useState({ nombre: "",descripcion:"", precio: "", stock: 0 });
 

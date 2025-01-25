@@ -3,11 +3,10 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 
-export default function Productos() {
+export default function ProductosPage() {
   const [productos, setProductos] = useState([]);
   const [stockUpdate, setStockUpdate] = useState({ id: null, stock: 0 });
 
-  // Función para cargar los productos
   async function fetchProductos() {
     const response = await fetch("/api/productos");
     const body = await response.json();
@@ -23,7 +22,6 @@ export default function Productos() {
       return;
     }
 
-    // Realizamos la solicitud para actualizar el stock
     const response = await fetch("/api/productos", {
       method: "PUT",
       headers: {
@@ -32,23 +30,19 @@ export default function Productos() {
       body: JSON.stringify({ id, stock: updatedStock }),
     });
 
-    // Si hay algún error en la respuesta
     if (!response.ok) {
       alert("Error al actualizar el stock.");
       return;
     }
 
-    // Actualizar la lista de productos después de la actualización
     fetchProductos();
     setStockUpdate({ id: null, stock: 0 });
   }
 
-  // Cargar productos al montar el componente
   useEffect(() => {
     fetchProductos();
   }, []);
 
-  // Mensaje si no hay productos
   if (productos.length === 0) {
     return <p>No hay artículos disponibles.</p>;
   }
@@ -86,7 +80,6 @@ export default function Productos() {
             </tbody>
           </table>
 
-          {/* Formulario de actualización de stock */}
           <div>
             <form
               onSubmit={(e) => handleUpdateStock(e, producto.id)} 
@@ -108,7 +101,6 @@ export default function Productos() {
         </div>
       ))}
 
-      {/* Enlace para añadir productos */}
       <Link href={"/productos/add"}>
         <button>Añadir productos</button>
       </Link>
